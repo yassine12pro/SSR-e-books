@@ -1,0 +1,48 @@
+
+
+<%-  include ("parts/top.ejs") %>
+<br><br><br><br><br>
+
+
+<div class="container">
+  <form method="POST" action="/mybooks/update" enctype="multipart/form-data">
+      <div class="form-group">
+        <label >Book Title</label>
+        <input type="text" class="form-control" name="title" value="<%=updateBook.title%>" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      <div class="form-group">
+          <label >Book Description</label><br>
+          <textarea class="form-control" name="description"  id="exampleFormControlTextarea1" rows="3"><%=updateBook.description%></textarea>
+      </div>
+      <input type="hidden" name="bookId" value="<%=updateBook._id %>">
+      <div class="form-group">
+          <label >Book Author</label>
+          <input type="text" class="form-control" name="author" value="<%=updateBook.author%>" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      <div class="form-group">
+          <label >Book price</label>
+          <input type="number" class="form-control" name="price" value="<%=updateBook.price%>" id="exampleInputEmail1" aria-describedby="emailHelp" >
+      </div>
+      <img src="/uploades/<%=updateBook.image%>" style="width: 100px;height: 100px;" alt="">
+      <input type="hidden" name="oldImage" value="<%= updateBook.image%>">
+      <div class="form-group">
+          <label >Book image</label>
+          <input type="file" accept=".jpg,.png,.jpeg,.jfif" name="image" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <% if (smessage){%>
+        <div class="alert alert-success">
+          <%= smessage %>
+        </div>
+      <%}%>
+      <% if (emessage){%>
+          <div class="alert alert-danger">
+              <%= emessage %>
+          </div>
+        <%}%>
+      <button type="submit" class="btn btn-primary">update</button>
+  </form>
+</div>
+
+
+
+<%- include("parts/bottom.ejs") %>
